@@ -1,1 +1,1 @@
-console.log("Day 2 - Scrun Events , Documentation & Collaboration");
+console.log("Day 2 - Scrum Events , Documentation & Collaboration");
