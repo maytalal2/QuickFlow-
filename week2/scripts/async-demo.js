@@ -1,29 +1,27 @@
 function asyncUsingPromise(url) {
-  
   return new Promise((resolve, reject) => {
     console.log("Festch request");
-    
-  
+
     setTimeout(() => {
       fetch(url)
-        .then(response => {
+        .then((response) => {
           if (!response.ok) {
             reject();
           }
-          return response.text(); 
+          return response.text();
         })
-        .then(data => resolve(data))
-        .catch(error => reject(error));
+        .then((data) => resolve(data))
+        .catch((error) => reject(error));
     }, 1000);
   });
 }
 
 asyncUsingPromise("https://jsoning.com/examples/")
-  .then(result => {
+  .then((result) => {
     console.log("completed");
     console.log(result);
   })
-  .catch(error => {
+  .catch((error) => {
     console.error("Error");
     alert(error);
   });
