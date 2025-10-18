@@ -1,5 +1,9 @@
 class User {
-  constructor(name, id, age) {
+  //add decleration
+  _name: string;
+  _id: number;
+  _age: number;
+  constructor(name :string, id :number, age :number) {
     this._name = name;
     this._id = id;
     this._age = age;
@@ -7,16 +11,16 @@ class User {
   }
 
   // Static variable decleration
-  static count = 0;
+  static  count:number = 0;
   //Private variable
-  // #privar;
+  private privar:string= "This is private variable";
 
   //Static method
-
-  static addage() {
+  /* static addage(age:number) {
     this._age += 1;
     return this._age;
   }
+    */ 
   //Getters
   get Fullname() {
     return this._name;
@@ -35,16 +39,16 @@ class User {
     this._name = name;
   }
 
-  set Age(age) {
+  set Age(age:number) {
     this._age = age;
   }
-  set id(id) {
+  set id(id:number) {
     this._id = id;
   }
 
   //Methods
 
-  addLastName(last) {
+  addLastName(last:string) {
     this._name = this._name + last;
   }
   login() {
@@ -54,14 +58,15 @@ class User {
   logout() {
     return "{this.name} is logged Out";
   }
-  updateProfile(id, name, age) {
+  updateProfile(id:number, name:string, age:number) {
     this._name = name;
     this._id = id;
     this._age = age;
   }
 }
 class Admin extends User {
-  constructor(name, id, age, permession) {
+  private _permession: number
+  constructor(name:string, id:number, age:number, permession:number) {
     super(name, id, age);
     this._permession = permession;
   }
@@ -98,4 +103,4 @@ console.log(User.count);
 console.log(Admin.count); //can acess static methods and vars
 // console.log(Admin.#privar) // can't acess from outside the class Private field '#privar' must be declared in an enclosing class
 
-// module.exports = { User, Admin };
+module.exports = { User, Admin };

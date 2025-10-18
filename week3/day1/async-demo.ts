@@ -1,6 +1,6 @@
-function asyncUsingPromise(url) {
+function asyncUsingPromise(url :string): Promise<string> {
   return new Promise((resolve, reject) => {
-    console.log("Festch request");
+    console.log("Fetch request");
 
     setTimeout(() => {
       fetch(url)
@@ -16,7 +16,7 @@ function asyncUsingPromise(url) {
   });
 }
 
-asyncUsingPromise("https://jsoning.com/examples/")
+asyncUsingPromise("https://jsonplaceholder.typicode.com/posts/1")
   .then((result) => {
     console.log("completed");
     console.log(result);

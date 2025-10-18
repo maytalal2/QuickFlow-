@@ -1,4 +1,4 @@
-async function asyncUsingAwait(url) {
+async function asyncUsingAwait(url :string) {
   try {
     console.log("async using await");
     await new Promise((result) => setTimeout(result, 1000));
