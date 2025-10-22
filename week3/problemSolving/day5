@@ -15,7 +15,7 @@
  *
  * Extra credit: Optimization time! During any given pass, if no elements are
  * swapped we can assume the list is sorted and can exit the function early.
- * After this optimization, what is the time complexity of your algorithm?
+ * After this optimization, what is the time complexity of your algorithm? o(N)
  *
  * More credits: Do you need to consider every element every time you iterate
  * through the array? Again: Has the time complexity of your algorithm changed?
@@ -33,18 +33,17 @@ function bubbleSort(array){ // 1st iteration [34,3,203,200,746,198,764,9,948]
   
 
     for(let j = 0; j < array.length; j++){ // for iterations  ...n
-  for(let i = 0; i < array.length; i++){  // for comparisons ...n
+    let swapped = false;
+  for(let i = 0; i < array.length-1-j; i++){  // for comparisons ...n
       if(array[i]>array[i+1]){
         let temp = array[i];
         array[i] = array[i+1];
         array[i+1] = temp;
-      }
-      
-
-
-      
+        swapped = true;
       }
     }
+    if (!swapped) break;
+  }
     //Time complexity O(n^2) 
   }
 bubbleSort(a);
