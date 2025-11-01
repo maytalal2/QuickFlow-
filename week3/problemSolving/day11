@@ -1,0 +1,50 @@
+/**
+ * Write a function that, given two objects, returns whether or not the two
+ * are deeply equivalent--meaning the structure of the two objects is the
+ * same, and so is the structure of each of their corresponding descendants.
+ *
+ * Examples:
+ *
+ * deepEquals({a:1, b: {c:3}},{a:1, b: {c:3}}); // true
+ * deepEquals({a:1, b: {c:5}},{a:1, b: {c:6}}); // false
+ *
+ * don't worry about handling cyclical object structures.
+ *
+ */
+function deepEquals(obj1, obj2) {
+  // If both are strictly equal (same reference or primitive value)
+  if (obj1 === obj2) return true;
+
+  // If one of them is null or not an object
+  if (
+    obj1 === null ||
+    obj2 === null ||
+    typeof obj1 !== "object" ||
+    typeof obj2 !== "object"
+  ) {
+    return false;
+  }
+
+  // Get all keys of both objects
+  const keys1 = Object.keys(obj1);
+  const keys2 = Object.keys(obj2);
+
+  // If they have a different number of keys, they are not equal
+  if (keys1.length !== keys2.length) return false;
+
+  // Check each key and its corresponding value
+  for (let key of keys1) {
+    // If the second object doesn’t have this key
+    if (!keys2.includes(key)) return false;
+
+    // Recursively compare values for deep equality
+    if (!deepEquals(obj1[key], obj2[key])) return false;
+  }
+
+  // If all checks pass, the objects are deeply equal
+  return true;
+}
+
+// Example tests
+console.log(deepEquals({ a: 1, b: { c: 3 } }, { a: 1, b: { c: 3 } })); // true
+console.log(deepEquals({ a: 1, b: { c: 5 } }, { a: 1, b: { c: 6 } })); // false
